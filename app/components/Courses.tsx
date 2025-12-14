@@ -3,187 +3,225 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Clock, Users, ArrowRight } from "lucide-react";
+import {
+  Clock,
+  Users,
+  ArrowRight,
+  Car,
+  ChefHat,
+  Smartphone,
+  Scissors,
+  Sparkles,
+  PaintBucket,
+  Hammer,
+  Building2,
+  Wrench,
+  Zap,
+  Gem,
+  Monitor,
+  Flame,
+  Sun,
+  Shapes,
+  Briefcase,
+  TreeDeciduous,
+  LayoutGrid,
+  Lightbulb,
+  User,
+  Camera,
+  Palette,
+  PenTool,
+  Sofa,
+  Factory,
+  type LucideIcon,
+} from "lucide-react";
 
-const courses = [
+interface Course {
+  name: string;
+  icon: LucideIcon;
+  description: string;
+  duration: string;
+  category: string;
+}
+
+const courses: Course[] = [
   {
     name: "Motor Vehicle Mechanics",
-    icon: "🚗",
+    icon: Car,
     description: "Master automotive repair, maintenance, and diagnostics.",
     duration: "6 months",
     category: "Automotive",
   },
   {
     name: "Culinary Arts",
-    icon: "👨‍🍳",
+    icon: ChefHat,
     description: "Learn professional cooking techniques and kitchen management.",
     duration: "4 months",
     category: "Hospitality",
   },
   {
     name: "Cellphone and Tablet Repair",
-    icon: "📱",
+    icon: Smartphone,
     description: "Diagnose and repair mobile devices with expert precision.",
     duration: "3 months",
     category: "Technology",
   },
   {
     name: "Sewing",
-    icon: "🧵",
+    icon: Scissors,
     description: "Create professional garments and develop fashion design skills.",
     duration: "4 months",
     category: "Fashion",
   },
   {
     name: "Cosmetology",
-    icon: "💄",
+    icon: Sparkles,
     description: "Master beauty treatments, skincare, and makeup artistry.",
     duration: "6 months",
     category: "Beauty",
   },
   {
     name: "Panel Beating and Spray Painting",
-    icon: "🎨",
+    icon: PaintBucket,
     description: "Restore vehicles to pristine condition with expert techniques.",
     duration: "6 months",
     category: "Automotive",
   },
   {
     name: "Carpentry",
-    icon: "🪚",
+    icon: Hammer,
     description: "Build and craft with wood using traditional and modern methods.",
     duration: "6 months",
     category: "Construction",
   },
   {
     name: "Building",
-    icon: "🏗️",
+    icon: Building2,
     description: "Learn construction fundamentals from foundation to finish.",
     duration: "8 months",
     category: "Construction",
   },
   {
     name: "Plumbing",
-    icon: "🔧",
+    icon: Wrench,
     description: "Install and maintain water and drainage systems professionally.",
     duration: "6 months",
     category: "Construction",
   },
   {
     name: "Auto Electrics and Electronics",
-    icon: "⚡",
+    icon: Zap,
     description: "Specialize in vehicle electrical systems and diagnostics.",
     duration: "6 months",
     category: "Automotive",
   },
   {
     name: "Jewellery Making",
-    icon: "💎",
+    icon: Gem,
     description: "Create stunning jewelry pieces using various techniques.",
     duration: "4 months",
     category: "Crafts",
   },
   {
     name: "Computer Repair and Maintenance",
-    icon: "💻",
+    icon: Monitor,
     description: "Diagnose, repair, and maintain computer hardware and software.",
     duration: "4 months",
     category: "Technology",
   },
   {
     name: "Steel Fabrication (Welding)",
-    icon: "🔩",
+    icon: Flame,
     description: "Master welding techniques for industrial applications.",
     duration: "6 months",
     category: "Industrial",
   },
   {
     name: "Solar Installation and Inverter Repair",
-    icon: "☀️",
+    icon: Sun,
     description: "Install and maintain renewable energy systems.",
     duration: "4 months",
     category: "Technology",
   },
   {
     name: "Sculpturing",
-    icon: "🗿",
+    icon: Shapes,
     description: "Create artistic sculptures using various materials and methods.",
     duration: "6 months",
     category: "Arts",
   },
   {
     name: "Leather Works",
-    icon: "👜",
+    icon: Briefcase,
     description: "Craft quality leather goods from bags to accessories.",
     duration: "4 months",
     category: "Crafts",
   },
   {
     name: "Landscaping",
-    icon: "🌳",
+    icon: TreeDeciduous,
     description: "Design and maintain beautiful outdoor spaces.",
     duration: "4 months",
     category: "Outdoor",
   },
   {
     name: "Tiling",
-    icon: "🔲",
+    icon: LayoutGrid,
     description: "Professional tile installation for floors and walls.",
     duration: "3 months",
     category: "Construction",
   },
   {
     name: "Electrical Installations",
-    icon: "💡",
+    icon: Lightbulb,
     description: "Install and maintain electrical systems safely and efficiently.",
     duration: "6 months",
     category: "Construction",
   },
   {
     name: "Hairdressing",
-    icon: "💇",
+    icon: User,
     description: "Master hair styling, cutting, and treatment techniques.",
     duration: "6 months",
     category: "Beauty",
   },
   {
     name: "Photography and Videography",
-    icon: "📸",
+    icon: Camera,
     description: "Capture stunning images and videos professionally.",
     duration: "4 months",
     category: "Media",
   },
   {
     name: "Graphic Design",
-    icon: "🎨",
+    icon: Palette,
     description: "Create compelling visual designs for print and digital media.",
     duration: "6 months",
     category: "Media",
   },
   {
     name: "Technical Drawing",
-    icon: "📐",
+    icon: PenTool,
     description: "Master precision drafting for engineering and architecture.",
     duration: "4 months",
     category: "Technical",
   },
   {
     name: "Upholstery",
-    icon: "🛋️",
+    icon: Sofa,
     description: "Restore and create beautiful furniture upholstery.",
     duration: "4 months",
     category: "Crafts",
   },
   {
     name: "Barbering",
-    icon: "✂️",
-    description: "Learn professional men&apos;s grooming and hair cutting.",
+    icon: Scissors,
+    description: "Learn professional men's grooming and hair cutting.",
     duration: "4 months",
     category: "Beauty",
   },
   {
     name: "Aluminium Fabrication",
-    icon: "🏭",
+    icon: Factory,
     description: "Fabricate aluminium structures for windows, doors, and more.",
     duration: "6 months",
     category: "Industrial",
@@ -276,8 +314,8 @@ export default function Courses() {
               className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 group"
             >
               {/* Icon */}
-              <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
-                {course.icon}
+              <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                <course.icon className="w-8 h-8 text-blue-600" />
               </div>
 
               {/* Category Badge */}

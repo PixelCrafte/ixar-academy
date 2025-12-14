@@ -2,35 +2,71 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown, GraduationCap } from "lucide-react";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  GraduationCap,
+  Car,
+  ChefHat,
+  Smartphone,
+  Scissors,
+  Sparkles,
+  PaintBucket,
+  Hammer,
+  Building2,
+  Wrench,
+  Zap,
+  Gem,
+  Monitor,
+  Flame,
+  Sun,
+  Shapes,
+  Briefcase,
+  TreeDeciduous,
+  LayoutGrid,
+  Lightbulb,
+  User,
+  Camera,
+  Palette,
+  PenTool,
+  Sofa,
+  Factory,
+  type LucideIcon,
+} from "lucide-react";
 
-const courses = [
-  { name: "Motor Vehicle Mechanics", icon: "🚗" },
-  { name: "Culinary Arts", icon: "👨‍🍳" },
-  { name: "Cellphone and Tablet Repair", icon: "📱" },
-  { name: "Sewing", icon: "🧵" },
-  { name: "Cosmetology", icon: "💄" },
-  { name: "Panel Beating and Spray Painting", icon: "🎨" },
-  { name: "Carpentry", icon: "🪚" },
-  { name: "Building", icon: "🏗️" },
-  { name: "Plumbing", icon: "🔧" },
-  { name: "Auto Electrics and Electronics", icon: "⚡" },
-  { name: "Jewellery Making", icon: "💎" },
-  { name: "Computer Repair and Maintenance", icon: "💻" },
-  { name: "Steel Fabrication (Welding)", icon: "🔩" },
-  { name: "Solar Installation and Inverter Repair", icon: "☀️" },
-  { name: "Sculpturing", icon: "🗿" },
-  { name: "Leather Works", icon: "👜" },
-  { name: "Landscaping", icon: "🌳" },
-  { name: "Tiling", icon: "🔲" },
-  { name: "Electrical Installations", icon: "💡" },
-  { name: "Hairdressing", icon: "💇" },
-  { name: "Photography and Videography", icon: "📸" },
-  { name: "Graphic Design", icon: "🎨" },
-  { name: "Technical Drawing", icon: "📐" },
-  { name: "Upholstery", icon: "🛋️" },
-  { name: "Barbering", icon: "✂️" },
-  { name: "Aluminium Fabrication", icon: "🏭" },
+interface Course {
+  name: string;
+  icon: LucideIcon;
+}
+
+const courses: Course[] = [
+  { name: "Motor Vehicle Mechanics", icon: Car },
+  { name: "Culinary Arts", icon: ChefHat },
+  { name: "Cellphone and Tablet Repair", icon: Smartphone },
+  { name: "Sewing", icon: Scissors },
+  { name: "Cosmetology", icon: Sparkles },
+  { name: "Panel Beating and Spray Painting", icon: PaintBucket },
+  { name: "Carpentry", icon: Hammer },
+  { name: "Building", icon: Building2 },
+  { name: "Plumbing", icon: Wrench },
+  { name: "Auto Electrics and Electronics", icon: Zap },
+  { name: "Jewellery Making", icon: Gem },
+  { name: "Computer Repair and Maintenance", icon: Monitor },
+  { name: "Steel Fabrication (Welding)", icon: Flame },
+  { name: "Solar Installation and Inverter Repair", icon: Sun },
+  { name: "Sculpturing", icon: Shapes },
+  { name: "Leather Works", icon: Briefcase },
+  { name: "Landscaping", icon: TreeDeciduous },
+  { name: "Tiling", icon: LayoutGrid },
+  { name: "Electrical Installations", icon: Lightbulb },
+  { name: "Hairdressing", icon: User },
+  { name: "Photography and Videography", icon: Camera },
+  { name: "Graphic Design", icon: Palette },
+  { name: "Technical Drawing", icon: PenTool },
+  { name: "Upholstery", icon: Sofa },
+  { name: "Barbering", icon: Scissors },
+  { name: "Aluminium Fabrication", icon: Factory },
 ];
 
 export default function Navbar() {
@@ -123,7 +159,7 @@ export default function Navbar() {
                         className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-blue-50 transition-colors group"
                         onClick={() => setIsCoursesOpen(false)}
                       >
-                        <span className="text-lg">{course.icon}</span>
+                        <course.icon className="w-4 h-4 text-blue-600" />
                         <span className="text-sm text-gray-700 group-hover:text-blue-600 transition-colors">
                           {course.name}
                         </span>
@@ -221,7 +257,7 @@ export default function Navbar() {
                           }}
                           className="flex items-center gap-2 py-2 text-sm text-gray-600 hover:text-blue-600"
                         >
-                          <span>{course.icon}</span>
+                          <course.icon className="w-4 h-4" />
                           <span>{course.name}</span>
                         </a>
                       ))}

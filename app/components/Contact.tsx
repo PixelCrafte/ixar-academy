@@ -311,7 +311,7 @@ export default function Contact() {
                         value={formState.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none"
-                        placeholder="+234 123 456 7890"
+                        placeholder="+263 78 632 9089"
                       />
                     </div>
                     <div>

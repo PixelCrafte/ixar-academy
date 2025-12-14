@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "Ixar Academy | Vocational Training Excellence",
   description: "Master practical skills with Ixar Academy. Offering 26+ vocational courses including Motor Vehicle Mechanics, Culinary Arts, Cosmetology, and more. Build your future with hands-on training.",
   keywords: "vocational training, technical skills, ixar academy, motor vehicle mechanics, culinary arts, cosmetology, trade school",
+  icons:{
+    
+  }
 };
 
 export default function RootLayout({

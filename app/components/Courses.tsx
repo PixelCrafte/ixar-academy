@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import {
@@ -32,6 +32,8 @@ import {
   PenTool,
   Sofa,
   Factory,
+  GraduationCap,
+  BookOpen,
   type LucideIcon,
 } from "lucide-react";
 import Image from "next/image";
@@ -52,7 +54,7 @@ const courses: Course[] = [
     description: "Master automotive repair, maintenance, and diagnostics.",
     duration: "6 months",
     category: "Automotive",
-    image: "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80",
+    image: "/images/mechanics.jpg",
   },
   {
     name: "Culinary Arts",
@@ -551,44 +553,106 @@ export default function Courses() {
           </>
         )}
 
-        {/* CTA Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-24 relative rounded-3xl overflow-hidden"
-        >
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <Image
-              src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600&q=80"
-              alt="Students learning"
-              fill
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/95 via-blue-800/90 to-blue-900/95"></div>
-          </div>
+      </div>
+    </section>
+  );
+}
 
-          {/* Content */}
-          <div className="relative p-12 md:p-16 text-center">
-            <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Ready to Start Your Career?
-            </h3>
-            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Enroll now and take the first step towards a rewarding career with
-              hands-on training from industry experts.
-            </p>
+// Full-page CTA section with video background and zoom-out scroll effect
+export function CareerCTA() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Video zooms out from 1.3 to 1 as you scroll into view
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1.3, 1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3], [0, 1]);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+    >
+      {/* Video Background with Zoom Effect */}
+      <motion.div className="absolute inset-0" style={{ scale }}>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source
+            src="/videos/hero-video.mp4"
+            type="video/mp4"
+          />
+        </video>
+        {/* Dark overlay for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/70 via-blue-900/60 to-blue-900/80"></div>
+      </motion.div>
+
+      {/* Content */}
+      <motion.div
+        style={{ opacity }}
+        className="relative z-10 text-center px-4 max-w-4xl mx-auto"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+            Ready To Start Your{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+              Career?
+            </span>
+          </h2>
+          <p className="text-xl md:text-2xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+            Enroll now and take the first step towards a rewarding career with
+            hands-on training from industry experts.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <motion.a
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-block bg-white text-blue-600 px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-10 py-5 rounded-full font-semibold text-lg shadow-2xl hover:shadow-white/25 transition-all"
             >
+              <GraduationCap className="w-6 h-6" />
               Enroll Today
+            </motion.a>
+            <motion.a
+              href="#courses"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white border border-white/30 px-10 py-5 rounded-full font-semibold text-lg hover:bg-white/20 transition-all"
+            >
+              <BookOpen className="w-6 h-6" />
+              View Courses
             </motion.a>
           </div>
         </motion.div>
-      </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center pt-2"
+          >
+            <motion.div className="w-1.5 h-3 bg-white/70 rounded-full" />
+          </motion.div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }

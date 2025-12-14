@@ -3,64 +3,42 @@
 import { motion } from "framer-motion";
 import { ChevronDown, Sparkles, Users, Award, BookOpen } from "lucide-react";
 
-// Pre-generated random positions for floating particles
-const floatingParticles = Array.from({ length: 20 }, (_, i) => ({
-  id: i,
-  left: (i * 5 + 2) % 100,
-  top: (i * 7 + 3) % 100,
-  duration: 3 + (i % 3),
-  delay: (i % 5) * 0.4,
-}));
-
 export default function Hero() {
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Animated Background */}
-      <div className="absolute inset-0 animated-gradient opacity-10"></div>
-      
-      {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {floatingParticles.map((particle) => (
-          <motion.div
-            key={particle.id}
-            className="absolute w-2 h-2 rounded-full bg-blue-500/20"
-            initial={{ opacity: 0 }}
-            animate={{
-              y: [0, -30, 0],
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: particle.duration,
-              repeat: Infinity,
-              delay: particle.delay,
-            }}
-            style={{
-              left: `${particle.left}%`,
-              top: `${particle.top}%`,
-            }}
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          {/* Using a free stock video - you can replace with your own */}
+          <source
+            src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_30fps.mp4"
+            type="video/mp4"
           />
-        ))}
+        </video>
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/70 via-blue-900/60 to-blue-950/80"></div>
       </div>
 
-      {/* Gradient Orbs */}
-      <div className="absolute top-20 left-10 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float"></div>
-      <div className="absolute bottom-20 right-10 w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-float animation-delay-2000"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-blue-600 rounded-full mix-blend-multiply filter blur-3xl opacity-10"></div>
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div className="text-center">
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 rounded-full px-4 py-2 mb-8"
+            className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-4 py-2 mb-8"
           >
-            <Sparkles className="w-4 h-4 text-blue-600" />
-            <span className="text-sm font-medium text-blue-700">
+            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <span className="text-sm font-medium text-white">
               26+ Vocational Courses Available
             </span>
           </motion.div>
@@ -70,10 +48,12 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6"
           >
             Master{" "}
-            <span className="gradient-text">Practical Skills</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
+              Practical Skills
+            </span>
             <br />
             Build Your Future
           </motion.h1>
@@ -83,7 +63,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-10"
+            className="text-xl md:text-2xl text-blue-100/90 max-w-3xl mx-auto mb-10"
           >
             Join Ixar Academy and transform your passion into profession with
             hands-on vocational training from industry experts.
@@ -100,7 +80,7 @@ export default function Hero() {
               href="#courses"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="gradient-bg text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-2xl transition-shadow pulse-glow"
+              className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl hover:shadow-cyan-500/25 hover:shadow-2xl transition-all"
             >
               Explore Courses
             </motion.a>
@@ -108,18 +88,18 @@ export default function Hero() {
               href="#contact"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-blue-600 border-2 border-blue-200 px-8 py-4 rounded-full font-semibold text-lg hover:border-blue-400 transition-colors"
+              className="bg-white/10 backdrop-blur-md text-white border border-white/30 px-8 py-4 rounded-full font-semibold text-lg hover:bg-white/20 transition-all"
             >
               Contact Us
             </motion.a>
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats - Glassy Cards */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
-            className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-4xl mx-auto"
           >
             {[
               { icon: BookOpen, label: "Courses", value: "26+" },
@@ -132,13 +112,13 @@ export default function Hero() {
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
-                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg border border-gray-100"
+                className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/20 hover:bg-white/15 transition-all group"
               >
-                <stat.icon className="w-8 h-8 text-blue-600 mx-auto mb-2" />
-                <div className="text-3xl font-bold text-gray-900">
+                <stat.icon className="w-8 h-8 text-cyan-400 mx-auto mb-2 group-hover:scale-110 transition-transform" />
+                <div className="text-3xl font-bold text-white">
                   {stat.value}
                 </div>
-                <div className="text-sm text-gray-500">{stat.label}</div>
+                <div className="text-sm text-blue-200">{stat.label}</div>
               </motion.div>
             ))}
           </motion.div>
@@ -155,7 +135,7 @@ export default function Hero() {
             href="#about"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center text-gray-400 hover:text-blue-600 transition-colors"
+            className="flex flex-col items-center text-white/60 hover:text-white transition-colors"
           >
             <span className="text-sm mb-2">Scroll Down</span>
             <ChevronDown className="w-6 h-6" />

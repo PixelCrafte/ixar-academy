@@ -12,6 +12,7 @@ import {
   MessageCircle,
   CheckCircle,
 } from "lucide-react";
+import { Facebook, Twitter, Instagram, MessageSquare } from "lucide-react";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -48,25 +49,25 @@ export default function Contact() {
     {
       icon: Phone,
       label: "Phone",
-      value: "+234 123 456 7890",
-      link: "tel:+2341234567890",
+      value: "+263 78 632 9089",
+      link: "tel:+263786329089",
     },
     {
       icon: Mail,
       label: "Email",
-      value: "info@ixaracademy.com",
-      link: "mailto:info@ixaracademy.com",
+      value: "admin@ixaracademy.co.zw",
+      link: "mailto:admin@ixaracademy.co.zw",
     },
     {
       icon: MapPin,
       label: "Address",
-      value: "123 Academy Street, Lagos, Nigeria",
+      value: "1st Floor, Batanai Gardens, Cnr 1st Streey & Jason Moyo",
       link: "#",
     },
     {
       icon: Clock,
       label: "Office Hours",
-      value: "Mon - Fri: 8:00 AM - 5:00 PM",
+      value: "Mon - Fri: 8:00 AM - 5:00 PM, Sat: 9:00 AM - 12:00 PM",
       link: "#",
     },
   ];
@@ -160,25 +161,63 @@ export default function Contact() {
             </div>
 
             {/* Social Links */}
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 mb-8">
               <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
                 <MessageCircle className="w-5 h-5 text-blue-600" />
                 Connect With Us
               </h4>
               <div className="flex gap-4">
-                {["facebook", "twitter", "instagram", "linkedin"].map(
-                  (social) => (
-                    <motion.a
-                      key={social}
-                      href="#"
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-100 transition-colors capitalize font-semibold text-sm"
-                    >
-                      {social[0].toUpperCase()}
-                    </motion.a>
-                  )
-                )}
+                <motion.a
+                  href="https://facebook.com/ixaracademy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 hover:bg-blue-600 hover:text-white transition-colors"
+                >
+                  <Facebook className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://wa.me/263786329089"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="w-12 h-12 bg-green-50 rounded-full flex items-center justify-center text-green-600 hover:bg-green-600 hover:text-white transition-colors"
+                >
+                  <MessageSquare className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://instagram.com/ixaracademy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="w-12 h-12 bg-pink-50 rounded-full flex items-center justify-center text-pink-600 hover:bg-pink-600 hover:text-white transition-colors"
+                >
+                  <Instagram className="w-5 h-5" />
+                </motion.a>
+                <motion.a
+                  href="https://twitter.com/ixaracademy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-400 hover:bg-blue-400 hover:text-white transition-colors"
+                >
+                  <Twitter className="w-5 h-5" />
+                </motion.a>
               </div>
+            </div>
+
+            {/* Google Maps Embed */}
+            <div className="rounded-2xl overflow-hidden shadow-lg border border-gray-100">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3798.5!2d31.049816297178435!3d-17.824004308819497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDQ5JzI2LjQiUyAzMcKwMDInNTkuMyJF!5e0!3m2!1sen!2szw!4v1699999999999!5m2!1sen!2szw"
+                width="100%"
+                height="250"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full"
+              ></iframe>
             </div>
           </motion.div>
 

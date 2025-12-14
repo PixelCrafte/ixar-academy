@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
   Menu,
   X,
@@ -98,28 +99,30 @@ export default function Navbar() {
           {/* Logo */}
           <motion.a
             href="#"
-            className="flex items-center gap-2"
+            className="flex items-center"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
-              <GraduationCap className="w-7 h-7 text-white" />
-            </div>
-            <span className="text-2xl font-bold gradient-text">
-              Ixar Academy
-            </span>
+            <Image
+              src="/ixar-academy-logo.png"
+              alt="Ixar Academy"
+              width={180}
+              height={50}
+              className="h-12 w-auto"
+              priority
+            />
           </motion.a>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-8">
             <a
               href="#home"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              className={`font-medium transition-colors ${scrolled ? "text-gray-700 hover:text-blue-600" : "text-white hover:text-blue-200"}`}
             >
               Home
             </a>
             <a
               href="#about"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              className={`font-medium transition-colors ${scrolled ? "text-gray-700 hover:text-blue-600" : "text-white hover:text-blue-200"}`}
             >
               About
             </a>
@@ -129,7 +132,7 @@ export default function Navbar() {
               <button
                 onClick={() => setIsCoursesOpen(!isCoursesOpen)}
                 onMouseEnter={() => setIsCoursesOpen(true)}
-                className="flex items-center gap-1 text-gray-700 hover:text-blue-600 font-medium transition-colors"
+                className={`flex items-center gap-1 font-medium transition-colors ${scrolled ? "text-gray-700 hover:text-blue-600" : "text-white hover:text-blue-200"}`}
               >
                 Courses
                 <ChevronDown
@@ -172,7 +175,7 @@ export default function Navbar() {
 
             <a
               href="#contact"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              className={`font-medium transition-colors ${scrolled ? "text-gray-700 hover:text-blue-600" : "text-white hover:text-blue-200"}`}
             >
               Contact
             </a>
@@ -190,12 +193,12 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className={`lg:hidden p-2 rounded-lg transition-colors ${scrolled ? "hover:bg-gray-100" : "hover:bg-white/10"}`}
           >
             {isOpen ? (
-              <X className="w-6 h-6 text-gray-700" />
+              <X className={`w-6 h-6 ${scrolled ? "text-gray-700" : "text-white"}`} />
             ) : (
-              <Menu className="w-6 h-6 text-gray-700" />
+              <Menu className={`w-6 h-6 ${scrolled ? "text-gray-700" : "text-white"}`} />
             )}
           </button>
         </div>

@@ -1,7 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { GraduationCap, Heart } from "lucide-react";
+import Image from "next/image";
+import { Heart, Facebook, Twitter, Instagram, MessageSquare } from "lucide-react";
+
+const socialLinks = [
+  { name: "Facebook", icon: Facebook, href: "https://facebook.com/ixaracademy", color: "hover:bg-blue-600" },
+  { name: "WhatsApp", icon: MessageSquare, href: "https://wa.me/263786329089", color: "hover:bg-green-600" },
+  { name: "Instagram", icon: Instagram, href: "https://instagram.com/ixaracademy", color: "hover:bg-pink-600" },
+  { name: "Twitter", icon: Twitter, href: "https://twitter.com/ixaracademy", color: "hover:bg-blue-400" },
+];
 
 const courses = [
   "Motor Vehicle Mechanics",
@@ -59,31 +67,34 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <motion.a
               href="#"
-              className="flex items-center gap-2 mb-6"
+              className="flex items-center mb-6"
               whileHover={{ scale: 1.05 }}
             >
-              <div className="w-12 h-12 gradient-bg rounded-xl flex items-center justify-center">
-                <GraduationCap className="w-7 h-7 text-white" />
-              </div>
-              <span className="text-2xl font-bold">Ixar Academy</span>
+              <Image
+                src="/ixar-academy-logo.png"
+                alt="Ixar Academy"
+                width={180}
+                height={50}
+                className="h-12 w-auto brightness-0 invert"
+              />
             </motion.a>
             <p className="text-gray-400 mb-6 leading-relaxed">
               Transforming lives through practical vocational education. Join us
               and build the skills you need for a successful career.
             </p>
             <div className="flex gap-4">
-              {["facebook", "twitter", "instagram", "linkedin"].map(
-                (social) => (
-                  <motion.a
-                    key={social}
-                    href="#"
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-colors"
-                  >
-                    {social[0].toUpperCase()}
-                  </motion.a>
-                )
-              )}
+              {socialLinks.map((social) => (
+                <motion.a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  className={`w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:text-white transition-colors ${social.color}`}
+                >
+                  <social.icon className="w-5 h-5" />
+                </motion.a>
+              ))}
             </div>
           </div>
 

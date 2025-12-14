@@ -168,7 +168,7 @@ export default function Contact() {
               </h4>
               <div className="flex gap-4">
                 <motion.a
-                  href="https://facebook.com/ixaracademy"
+                  href="https://www.facebook.com/IxarAcademy"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
@@ -186,7 +186,7 @@ export default function Contact() {
                   <MessageSquare className="w-5 h-5" />
                 </motion.a>
                 <motion.a
-                  href="https://instagram.com/ixaracademy"
+                  href="https://www.instagram.com/ixaracademy?igsh=MTA5OGRmZW9zNG44cg=="
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}
@@ -195,7 +195,7 @@ export default function Contact() {
                   <Instagram className="w-5 h-5" />
                 </motion.a>
                 <motion.a
-                  href="https://twitter.com/ixaracademy"
+                  href="https://x.com/IxarAcademy/status/1935960753988661584"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.1, y: -2 }}

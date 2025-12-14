@@ -5,10 +5,10 @@ import Image from "next/image";
 import { Heart, Facebook, Twitter, Instagram, MessageSquare } from "lucide-react";
 
 const socialLinks = [
-  { name: "Facebook", icon: Facebook, href: "https://facebook.com/ixaracademy", color: "hover:bg-blue-600" },
+  { name: "Facebook", icon: Facebook, href: "https://www.facebook.com/IxarAcademy", color: "hover:bg-blue-600" },
   { name: "WhatsApp", icon: MessageSquare, href: "https://wa.me/263786329089", color: "hover:bg-green-600" },
-  { name: "Instagram", icon: Instagram, href: "https://instagram.com/ixaracademy", color: "hover:bg-pink-600" },
-  { name: "Twitter", icon: Twitter, href: "https://twitter.com/ixaracademy", color: "hover:bg-blue-400" },
+  { name: "Instagram", icon: Instagram, href: "https://www.instagram.com/ixaracademy?igsh=MTA5OGRmZW9zNG44cg==", color: "hover:bg-pink-600" },
+  { name: "Twitter", icon: Twitter, href: "https://x.com/IxarAcademy/status/1935960753988661584", color: "hover:bg-blue-400" },
 ];
 
 const courses = [

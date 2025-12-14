@@ -100,6 +100,10 @@ html {
   animation: float 6s ease-in-out infinite;
 }
 
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
 /* Pulse glow animation */
 @keyframes pulse-glow {
   0%, 100% {

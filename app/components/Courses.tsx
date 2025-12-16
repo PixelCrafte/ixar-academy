@@ -222,7 +222,8 @@ const courses: Course[] = [
     description: "Create compelling visual designs for print and digital media.",
     duration: "6 months",
     category: "Media",
-    image: "https://images.unsplash.com/photo-1626785774625-0b1c2c4eab67?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    // https://images.unsplash.com/photo-1626785774573-4b799315345d?q=80&w=1471&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D
   },
   {
     name: "Technical Drawing",

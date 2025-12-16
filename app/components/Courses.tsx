@@ -54,7 +54,7 @@ const courses: Course[] = [
     description: "Master automotive repair, maintenance, and diagnostics.",
     duration: "6 months",
     category: "Automotive",
-    image: "/images/mechanics.jpg",
+    image: "/images/mechanics.webp",
   },
   {
     name: "Culinary Arts",
